@@ -1,15 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aleksandr
- * Date: 21.12.17
- * Time: 12:38
- */
-
 namespace App\Controller;
 
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class TestController
+
+class TestController extends Controller
 {
 
+    /**
+     * @Route("/test/number")
+     */
+    public function number()
+    {
+        $number = mt_rand(0, 100);
+
+        return $this->render('test/number.html.twig', [
+            'number'=>$number
+        ]);
+    }
 }
