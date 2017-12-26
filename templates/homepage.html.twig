@@ -1,9 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>TEST</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="display-3">The Secret Shop!</h1>
+                    <p class="lead">
+                        Hello my friend! Welcome to The Secret Shop!
+                    </p>
+                    <hr class="my-4">
+                    <p class="lead">
+                        <a class="btn btn-success btn-lg" href="{{ path('user_login') }}" role="button">LogIn</a>
+                        <a class="btn btn-primary btn-lg" href="{{ path('user_registration') }}" role="button">Registration</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
 
 {% block title %}
-fdsf
+The Secret Shop!
 {% endblock %}
 

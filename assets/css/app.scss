@@ -1,0 +1,25 @@
+
+$brand-primary: darken(#428bca, 20%);
+$fa-font-path: "~font-awesome/fonts";
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+footer{
+  background-color: #222;
+  color:#ffffff;
+
+  a.nav-link{
+    color:#868e96;
+    &:hover{
+      color:#ffffff;
+    }
+  }
+}
+
+.login-form-row{
+  padding-bottom:15px;
+}
+
+.navbar-brand{
+  height:auto;
+}

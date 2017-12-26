@@ -1,0 +1,15 @@
+footer{
+    background-color: #222;
+    color:#ffffff;
+}
+
+footer a.nav-link {
+    color:#868e96;
+}
+footer a.nav-link:hover{
+    color: #ffffff;
+}
+
+.login-form-row{
+    padding-bottom:15px;
+}

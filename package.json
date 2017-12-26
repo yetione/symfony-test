@@ -1,0 +1,32 @@
+{
+  "name": "yeti-shop",
+  "version": "1.0.0",
+  "description": "Test Symfony project",
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap-show-password": "^1.1.2"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.17.0",
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "^3.2.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "webpack-notifier": "^1.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yetione/symfony-test.git"
+  },
+  "author": "yetione",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yetione/symfony-test/issues"
+  },
+  "homepage": "https://github.com/yetione/symfony-test#readme"
+}

@@ -46,6 +46,36 @@ class User implements AdvancedUserInterface, \Serializable
     private $isActive;
 
     /**
+     * @ORM\Column(name="date_registration", type="integer")
+     * @var int
+     */
+    private $dateRegistration;
+
+    /**
+     * @ORM\Column(name="first_name", type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(max="255")
+     * @var string
+     */
+    private $firstName;
+
+
+    /**
+     * @ORM\Column(name="second_name", type="string")
+     * @Assert\Length(max="255")
+     * @var string
+     */
+    private $secondName;
+
+    /**
+     * @ORM\Column(name="last_visit", type="integer")
+     * @var int
+     */
+    private $lastVisit;
+
+    
+
+    /**
      * @var string
      */
     private $salt;
@@ -60,6 +90,8 @@ class User implements AdvancedUserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
+        $this->dateRegistration = time();
+        $this->lastVisit = time();
     }
 
     /**
@@ -275,5 +307,53 @@ class User implements AdvancedUserInterface, \Serializable
     public function isEnabled()
     {
         return $this->isActive;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDateRegistration()
+    {
+        return $this->dateRegistration;
+    }
+
+    /**
+     * @param int $dateRegistration
+     */
+    public function setDateRegistration(int $dateRegistration)
+    {
+        $this->dateRegistration = $dateRegistration;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName(string $firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSecondName()
+    {
+        return $this->secondName;
+    }
+
+    /**
+     * @param string $secondName
+     */
+    public function setSecondName(string $secondName)
+    {
+        $this->secondName = $secondName;
     }
 }
