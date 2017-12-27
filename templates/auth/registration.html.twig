@@ -2,7 +2,15 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('build/js/bootstrap-show-password.js') }}"></script>
+    {#<script src="{{ asset('build/js/bootstrap-show-password.js') }}"></script>#}
+
+    {#<script src="{{ asset('build/js/jquery/maskedinput.js') }}"></script>#}
+    {#<script src="{{ asset('build/js/jquery/intlTelInput.js') }}"></script>#}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/bootstrap/formhelpers.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/jquery/intlTelInput.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -46,19 +54,39 @@
                     </div>
                     <div class="form-group col-md-4">
                         {#<label for="inputPassword">Password</label>#}
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="{{ form.plainPassword.first.vars.full_name }}" data-toggle="password">
+                        <input type="password"
+                               class="form-control"
+                               id="inputPassword"
+                               placeholder="Password"
+                               name="{{ form.plainPassword.vars.full_name }}"
+                               data-toggle="password">
                     </div>
                 </div>
-
-                <div class="form-group">
-                    {{ form_row(form.plainPassword.first, {'attr': {'class':'form-control'}}) }}
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <div id="registration-country" class="bfh-selectbox bfh-countries" data-blank="false" data-name="{{ form.country.vars.full_name }}" data-country="US" data-flags="true">
+                        <input type="hidden" value="" name="">
+                        <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+                            <span class="bfh-selectbox-option input-medium" data-option=""></span>
+                            <b class="caret"></b>
+                        </a>
+                        <div class="bfh-selectbox-options">
+                            <input type="text" class="bfh-selectbox-filter" >
+                            <div role="listbox">
+                                <ul role="option">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    {{ form_row(form.plainPassword.second, {'attr': {'class':'form-control'}}) }}
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control bfh-phone" id="registration-phone" >
                 </div>
+            </div>
 
-    <button type="submit" class="btn btn-success">Register!</button>
-    {{ form_end(form) }}
+
+                <button type="submit" class="btn btn-success">Register!</button>
+    {{ form_end(form, {'render_rest': false}) }}
         </div>
     </div>
 {% endblock %}

@@ -87,6 +87,13 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $plainPassword;
 
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(name="country", type="string", length=5)
+     * @var string
+     */
+    private $country;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -355,5 +362,21 @@ class User implements AdvancedUserInterface, \Serializable
     public function setSecondName(string $secondName)
     {
         $this->secondName = $secondName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry(string $country)
+    {
+        $this->country = $country;
     }
 }
