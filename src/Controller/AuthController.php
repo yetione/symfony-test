@@ -44,10 +44,16 @@ class AuthController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+            $user->setUsername($form->get('username'));
             $password = $passwordEncoder->encodePassword(
                 $user, $user->getPlainPassword()
             );
             $user->setPassword($password);
+            $user->setEmail($form->get('email'));
+            $user->setFirstName($form->get('firstName'));
+            $user->setSecondName($form->get('secondName'));
+            $user->setCountry($form->get('country'));
+            $user->setPhone($form->get('phone'));
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();

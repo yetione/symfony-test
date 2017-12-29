@@ -15,6 +15,7 @@ Encore
     //.addEntry('js/jquery/intlTelInput', './assets/js/jquery/intlTelInput.min.js')
     //.addEntry('js/jquery/utils', './assets/js/jquery/utils.js')
     .addStyleEntry('css/jquery/intlTelInput', './assets/css/intlTelInput.css')
+    .addStyleEntry('css/jquery/countrySelect', './assets/css/countrySelect.min.css')
 
 
     //.addEntry('template', './assets/yeti-shop/src/app/app.component.html')

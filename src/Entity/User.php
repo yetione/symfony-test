@@ -94,6 +94,18 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $country;
 
+    /**
+     * @ORM\Column(name="date_birthday", type="date")
+     * @var \DateTime
+     */
+    private $dateBirthday;
+
+    /**
+     * @ORM\Column(name="phone", type="string", length=50)
+     * @var string
+     */
+    private $phone;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -378,5 +390,37 @@ class User implements AdvancedUserInterface, \Serializable
     public function setCountry(string $country)
     {
         $this->country = $country;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateBirthday()
+    {
+        return $this->dateBirthday;
+    }
+
+    /**
+     * @param \DateTime $dateBirthday
+     */
+    public function setDateBirthday(\DateTime $dateBirthday)
+    {
+        $this->dateBirthday = $dateBirthday;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone(string $phone)
+    {
+        $this->phone = $phone;
     }
 }

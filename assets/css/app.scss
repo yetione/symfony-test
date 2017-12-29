@@ -23,3 +23,10 @@ footer{
 .navbar-brand{
   height:auto;
 }
+.form-group {
+  .country-select.inside,
+  .intl-tel-input,
+  .gj-datepicker-bootstrap{
+    width:100%;
+  }
+}

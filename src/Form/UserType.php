@@ -3,6 +3,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -19,7 +20,11 @@ class UserType extends AbstractType
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
             ->add('plainPassword', PasswordType::class)
-            ->add('country', TextType::class);
+            ->add('country', TextType::class)
+            ->add('firstName', TextType::class)
+            ->add('secondName', TextType::class)
+            ->add('dateBirthday', DateType::class)
+            ->add('phone', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
