@@ -9,7 +9,7 @@
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('build/css/bootstrap/formhelpers.css') }}">
+    {#<link rel="stylesheet" href="{{ asset('build/css/bootstrap/formhelpers.css') }}">#}
     <link rel="stylesheet" href="{{ asset('build/css/jquery/intlTelInput.css') }}">
     <link rel="stylesheet" href="{{ asset('build/css/jquery/countrySelect.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.7.2/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
@@ -18,6 +18,7 @@
 {% block title %}
     Registration
 {% endblock %}
+{% block dataPage %}registration{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
@@ -36,58 +37,90 @@
     <div class="row justify-content-md-center login-form-row">
         <div class="col-md-offset-3 col-md-6">
             {{ form_start(form) }}
-                <div class="form-row">
+
+            {#<input type="hidden" name="_csrf_token" value="{{ csrf_token('registration') }}">#}
+                <div class="form-row align-items-center">
                     <div class="form-group col-md-4">
-                        {#<label for="inputUsername">Username</label>#}
+                        <label class="sr-only" for="registration-username">Username</label>
                         <input type="text"
                                class="form-control"
-                               id="inputUsername"
+                               id="registration-username"
                                placeholder="Username"
                                name="{{ form.username.vars.full_name }}">
                     </div>
                     <div class="form-group col-md-4">
-                        {#<label for="inputEmail">Email</label>#}
+                        <label class="sr-only" for="registration-email">Email</label>
                         <input type="email"
                                class="form-control"
-                               id="inputEmail"
+                               id="registration-email"
                                placeholder="Email"
                                name="{{ form.email.vars.full_name }}">
 
                     </div>
                     <div class="form-group col-md-4">
-                        {#<label for="inputPassword">Password</label>#}
+                        <label class="sr-only" for="registration-password">Password</label>
                         <input type="password"
-                               class="form-control"
-                               id="inputPassword"
+                               class="form-control j-password-input"
+                               id="registration-password"
                                placeholder="Password"
-                               name="{{ form.plainPassword.vars.full_name }}"
-                               data-toggle="password">
+                               name="{{ form.plainPassword.vars.full_name }}">
                     </div>
                 </div>
-            <div class="form-row">
+            <div class="form-row align-items-center">
                 <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="registration-firstName" name="{{ form.firstName.vars.full_name }}" placeholder="First name">
+                    <label class="sr-only" for="registration-firstName">First name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="registration-firstName"
+                           name="{{ form.firstName.vars.full_name }}"
+                           placeholder="First name">
                 </div>
                 <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="registration-secondName" name="{{ form.secondName.vars.full_name }}" placeholder="Last name">
+                    <label class="sr-only" for="registration-secondName">Last name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="registration-secondName"
+                           name="{{ form.secondName.vars.full_name }}"
+                           placeholder="Last name">
                 </div>
-                <div class="form-group col-md-4">
-                    <input type="text" class="form-control" id="registration-dateBirthday" name="{{ form.secondName.vars.full_name }}" placeholder="Date birthday">
+                <div class="form-group col-md-4 control-datepicker">
+                    <label class="sr-only" for="registration-dateBirthday">Date birthday</label>
+                    <input type="text"
+                           class="form-control j-datepicker"
+                           data-format="{{ date_format }}"
+                           id="registration-dateBirthday"
+                           name="{{ form.dateBirthday.vars.full_name }}"
+                           placeholder="Date birthday">
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row align-items-center">
                 <div class="form-group col-md-4">
-                    <input type="text" id="registration-country" name="{{ form.country.vars.full_name }}" class="form-control">
+                    <label class="sr-only" for="registration-country">Country</label>
+                    <input type="text"
+                           id="registration-country"
+                           name="{{ form.country.vars.full_name }}"
+                           data-phone-input="registration-phone"
+                           class="form-control j-country-select"
+                           placeholder="Country">
 
                 </div>
                 <div class="form-group col-md-4">
-                    <input type="text" class="form-control bfh-phone" id="registration-phone" name="{{ form.phone.vars.full_name }}" >
+                    <label class="sr-only" for="registration-phone">Phone</label>
+                    <input type="text"
+                           class="form-control bfh-phone j-phone-input"
+                           data-country-select="registration-country"
+                           id="registration-phone"
+                           name="{{ form.phone.vars.full_name }}">
                 </div>
             </div>
 
 
+            <div class="form-row align-items-center">
+                <div class="form-group col-md-4">
+                    <button type="submit" class="btn btn-success">Register!</button>
+                </div>
+            </div>
 
-                <button type="submit" class="btn btn-success">Register!</button>
     {{ form_end(form, {'render_rest': false}) }}
         </div>
     </div>

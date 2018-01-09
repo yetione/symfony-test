@@ -1,0 +1,16 @@
+form{
+  .control-datepicker{
+    .input-group-addon{
+      &[role="right-icon"] .input-group-text{
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left: none;
+      }
+      &[role="left-icon"] .input-group-text{
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right: none;
+      }
+    }
+  }
+}

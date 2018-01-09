@@ -13,6 +13,10 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AuthController extends Controller
 {
 
+    protected $phpToJsDateFormat = [
+        'm/d/Y' => 'mm/dd/yyyy'
+    ];
+
     /**
      * @Route("/login", name="user_login")
      * @param Request $request
@@ -61,6 +65,6 @@ class AuthController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('auth/registration.html.twig', ['form'=> $form->createView()]);
+        return $this->render('auth/registration.html.twig', ['form'=> $form->createView(), 'date_format'=>$this->phpToJsDateFormat[User::DATE_FORMAT]]);
     }
 }

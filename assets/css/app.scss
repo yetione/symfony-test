@@ -1,7 +1,10 @@
 
 $brand-primary: darken(#428bca, 20%);
-$fa-font-path: "~font-awesome/fonts";
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+//$fa-font-path: "~font-awesome/fonts";
+@import '~bootstrap/scss/bootstrap';
+@import "./modules/password-input";
+
+//@import "./parts/forms";
 
 
 footer{

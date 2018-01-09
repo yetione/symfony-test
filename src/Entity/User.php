@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 
+use App\Exception\UnexpectedTypeException;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,12 +11,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="Email already taken")
- * @UniqueEntity(fields={"username"}, message="Username already taken")
  * Class User
  * @package App\Entity
  */
 class User implements AdvancedUserInterface, \Serializable
 {
+
+    /**
+     * @const string
+     */
+    const DATE_FORMAT = 'm/d/Y';
 
     /**
      * @ORM\Id()
@@ -233,7 +238,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setUsername(string $username)
     {
-        $this->username = $username;
+        $this->email = $username;
     }
 
     /**
@@ -401,11 +406,18 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @param \DateTime $dateBirthday
+     * @param \DateTime|string $dateBirthday
      */
-    public function setDateBirthday(\DateTime $dateBirthday)
+    public function setDateBirthday($dateBirthday)
     {
-        $this->dateBirthday = $dateBirthday;
+        if ($dateBirthday instanceof \DateTime){
+            $this->dateBirthday = $dateBirthday;
+        }elseif (is_string($dateBirthday)
+            && false !== ($t = \DateTime::createFromFormat(self::DATE_FORMAT, strval($dateBirthday)))){
+                $this->dateBirthday = $t;
+        }
+        throw new UnexpectedTypeException($dateBirthday, 'string or \DateTime');
+
     }
 
     /**
